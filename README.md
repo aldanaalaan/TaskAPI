@@ -4,7 +4,10 @@
 
 Una API de práctica para aprender conceptos como enrutamiento, middlewares, control de acceso con JWT, bases de datos no relacionales con MongoDB y validación de datos, ademas de aprender a documentar una API.
 
+## Atención: Por ahora está pendiente la documentación del resto de endpoints
+
 - [TaskAPI](#taskapi)
+  - [Atención: Por ahora está pendiente la documentación del resto de endpoints](#atención-por-ahora-está-pendiente-la-documentación-del-resto-de-endpoints)
   - [Ejemplos de uso](#ejemplos-de-uso)
   - [Instalación](#instalación)
     - [Requisitos de instalación](#requisitos-de-instalación)
@@ -147,5 +150,3 @@ Para poder ejecutar TaskAPI de forma local se necesita:
   |         409          | El correo electrónico proporcionado ya está vinculado a un usuario. |
 
 ---
-
-<!-- TODO: Terminar el README -->
