@@ -26,7 +26,7 @@ Una API de práctica para aprender conceptos como enrutamiento, middlewares, con
 Para poder ejecutar TaskAPI de forma local se necesita:
 
 - Node.js
-- PNPM
+- NPM
 - MongoDB
 
 ### Instrucciones de instalación
@@ -35,7 +35,7 @@ Para poder ejecutar TaskAPI de forma local se necesita:
 2. En una terminal ubicada en el directorio inicial del proyecto, ejecutar el siguiente comando:
 
    ```sh
-   pnpm i
+   npm i
    ```
 
    Esto instalará todas las dependencias de Node.js necesarias para el funcionamiento del proyecto.
@@ -43,8 +43,8 @@ Para poder ejecutar TaskAPI de forma local se necesita:
 3. Crear un archivo "**.env**" en el directorio inicial del proyecto, con las siguientes variables:
 
    ```javascript
-   SECRET_KEY = "[Clave secreta]";
-   DB_URI = "[Enlace a BD de MongoDB]";
+   SECRET_KEY = '[Clave secreta]';
+   DB_URI = '[Enlace a BD de MongoDB]';
    ```
 
 4. De tener la BD de manera local, iniciar el servidor con el siguiente comando en la terminal:
@@ -58,7 +58,7 @@ Para poder ejecutar TaskAPI de forma local se necesita:
    - Iniciar el proyecto.
 
      ```sh
-     pnpm start
+     npm start
      ```
 
    - Iniciar el proyecto para desarrollo (Se actualiza el servidor al guardar cambios en el proyecto)
