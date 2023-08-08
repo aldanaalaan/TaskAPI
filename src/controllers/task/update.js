@@ -1,16 +1,16 @@
 // * Actualizar el titulo y/o descripción de una tarea
 // Importaciones
 
-import { validateDescription, validateTitle } from "../../utils/validators.js";
+import { Router } from 'express';
 
-import { Router } from "express";
-import { Task } from "../../models/Task.js";
-import errorHandler from "../../utils/errorHandler.js";
-import validateToken from "../../middlewares/validateToken.js";
+import validateToken from '../../middlewares/validateToken.js';
+import { Task } from '../../models/Task.js';
+import errorHandler from '../../utils/errorHandler.js';
+import { validateDescription, validateTitle } from '../../utils/validators.js';
 
 const updateRoute = Router();
 
-updateRoute.put(":id", validateToken, async (req, res) => {
+updateRoute.put(':id', validateToken, async (req, res) => {
   // Obtener datos
   const { title, description } = req.body;
   const taskId = req.params.id;
@@ -21,7 +21,7 @@ updateRoute.put(":id", validateToken, async (req, res) => {
   if (!task) {
     res.status(404).json({
       success: false,
-      message: "Tarea no encontrada",
+      message: 'Tarea no encontrada',
     });
   }
 
@@ -29,7 +29,7 @@ updateRoute.put(":id", validateToken, async (req, res) => {
   if (!title && !description) {
     res.status(400).json({
       success: false,
-      message: "Ningún dato proporcionado para actualizar",
+      message: 'Ningún dato proporcionado para actualizar',
     });
   }
 
@@ -37,7 +37,7 @@ updateRoute.put(":id", validateToken, async (req, res) => {
   if (!validateTitle(title) || validateDescription(description)) {
     res.status(400).json({
       success: false,
-      message: "Uno o más datos ingresados son inválidos",
+      message: 'Uno o más datos ingresados son inválidos',
     });
   }
 
@@ -54,7 +54,7 @@ updateRoute.put(":id", validateToken, async (req, res) => {
     const updatedTask = await task.save();
     res.status(200).json({
       success: true,
-      message: "Dato de la tarea actualizados correctamente",
+      message: 'Dato de la tarea actualizados correctamente',
       // OPTIMIZE: Encontrar una forma de retornar el task sin repetición de código
       task: description
         ? {

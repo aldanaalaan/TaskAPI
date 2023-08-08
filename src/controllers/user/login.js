@@ -1,19 +1,19 @@
 // * Obtener token con un usuario ya creado
 // Importaciones
 
+import { Router } from 'express';
+
+import { User } from '../../models/User.js';
+import generateToken from '../../utils/generateToken.js';
 import {
   emailExists,
   validateEmail,
   validatePassword,
-} from "../../utils/validators.js";
-
-import { Router } from "express";
-import { User } from "../../models/User.js";
-import generateToken from "../../utils/generateToken.js";
+} from '../../utils/validators.js';
 
 const loginRoute = Router();
 
-loginRoute.post("/", async (req, res) => {
+loginRoute.post('/', async (req, res) => {
   const { email, password } = req.body;
   const user = await User.findOne({ email: email });
 
@@ -22,7 +22,7 @@ loginRoute.post("/", async (req, res) => {
     res.status(400).json({
       success: false,
       message:
-        "Falta de datos: correo electrónico o contraseña no proporcionados",
+        'Falta de datos: correo electrónico o contraseña no proporcionados',
     });
   }
 
@@ -30,13 +30,13 @@ loginRoute.post("/", async (req, res) => {
   if (!validateEmail(email)) {
     res.status(400).json({
       success: false,
-      message: "El correo electrónico proporcionado no es valido",
+      message: 'El correo electrónico proporcionado no es valido',
     });
   }
   if (!validatePassword(password)) {
     res.status(400).json({
       success: false,
-      message: "La contraseña proporcionada no es valida",
+      message: 'La contraseña proporcionada no es valida',
     });
   }
 
@@ -46,7 +46,7 @@ loginRoute.post("/", async (req, res) => {
   if (!emailExist) {
     res.status(401).json({
       success: false,
-      message: "El correo electrónico proporcionado no está registrado",
+      message: 'El correo electrónico proporcionado no está registrado',
     });
   }
 
@@ -56,14 +56,14 @@ loginRoute.post("/", async (req, res) => {
   if (!passwordIsValid) {
     res.status(401).json({
       success: false,
-      message: "La contraseña proporcionada es incorrecta",
+      message: 'La contraseña proporcionada es incorrecta',
     });
   }
 
   // * Respuesta exitosa
   res.status(200).json({
     success: true,
-    message: "Inicio de sesión exitoso",
+    message: 'Inicio de sesión exitoso',
     token: generateToken({
       _id: user._id,
       username: user.username,

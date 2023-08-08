@@ -1,15 +1,15 @@
 // * Actualizar nombre de usuario y/o correo electrónico
 // Importaciones
 
-import { validateEmail, validateUsername } from "../../utils/validators.js";
+import { Router } from 'express';
 
-import { Router } from "express";
-import { User } from "../../models/User.js";
-import validateToken from "../../middlewares/validateToken.js";
+import validateToken from '../../middlewares/validateToken.js';
+import { User } from '../../models/User.js';
+import { validateEmail, validateUsername } from '../../utils/validators.js';
 
 const updateRoute = Router();
 
-updateRoute.put("/", validateToken, async (req, res) => {
+updateRoute.put('/', validateToken, async (req, res) => {
   // Obtener los datos
   const { username, email } = req.body;
   const userID = req.decoded._id;
@@ -21,7 +21,7 @@ updateRoute.put("/", validateToken, async (req, res) => {
   if (!user) {
     res.status(404).json({
       success: false,
-      message: "Usuario no encontrado",
+      message: 'Usuario no encontrado',
     });
   }
 
@@ -29,7 +29,7 @@ updateRoute.put("/", validateToken, async (req, res) => {
   if (!username && !email) {
     res.status(400).json({
       success: false,
-      message: "Ningún dato proporcionado para actualizar",
+      message: 'Ningún dato proporcionado para actualizar',
     });
   }
 
@@ -37,7 +37,7 @@ updateRoute.put("/", validateToken, async (req, res) => {
   if (!validateUsername(username) || !validateEmail(email)) {
     res.status(400).json({
       success: false,
-      message: "Uno o más datos ingresados son inválidos",
+      message: 'Uno o más datos ingresados son inválidos',
     });
   }
 
@@ -54,7 +54,7 @@ updateRoute.put("/", validateToken, async (req, res) => {
     const updatedUser = await user.save();
     res.status(200).json({
       success: true,
-      message: "Datos del usuario actualizados correctamente",
+      message: 'Datos del usuario actualizados correctamente',
       user: {
         _id: updatedUser._id,
         username: updatedUser.username,
@@ -64,7 +64,7 @@ updateRoute.put("/", validateToken, async (req, res) => {
   } catch (err) {
     res.status(500).json({
       success: false,
-      message: "Error interno del servidor",
+      message: 'Error interno del servidor',
     });
   }
 });

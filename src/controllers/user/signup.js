@@ -1,40 +1,40 @@
 // * Registro de un nuevo usuario
 // Importaciones
 
+import { Router } from 'express';
+
+import { User } from '../../models/User.js';
+import errorHandler from '../../utils/errorHandler.js';
+import generateToken from '../../utils/generateToken.js';
 import {
   emailExists,
   validateEmail,
   validatePassword,
   validateUsername,
-} from "../../utils/validators.js";
-
-import { Router } from "express";
-import { User } from "../../models/User.js";
-import errorHandler from "../../utils/errorHandler.js";
-import generateToken from "../../utils/generateToken.js";
+} from '../../utils/validators.js';
 
 const signupRoute = Router();
 
-signupRoute.post("/", async (req, res) => {
+signupRoute.post('/', async (req, res) => {
   const { username, email, password } = req.body;
 
   // !V Falta de datos
   if (!username) {
     res.status(400).json({
       success: false,
-      message: "Nombre de usuario no proporcionado",
+      message: 'Nombre de usuario no proporcionado',
     });
   }
   if (!email) {
     res.status(400).json({
       success: false,
-      message: "Correo electrónico no proporcionado",
+      message: 'Correo electrónico no proporcionado',
     });
   }
   if (!password) {
     res.status(400).json({
       success: false,
-      message: "Nombre de usuario no proporcionado",
+      message: 'Nombre de usuario no proporcionado',
     });
   }
 
@@ -42,19 +42,19 @@ signupRoute.post("/", async (req, res) => {
   if (!validateUsername) {
     res.status(400).json({
       success: false,
-      message: "El nombre de usuario proporcionado no es valido",
+      message: 'El nombre de usuario proporcionado no es valido',
     });
   }
   if (!validateEmail) {
     res.status(400).json({
       success: false,
-      message: "El correo electrónico proporcionado no es valido",
+      message: 'El correo electrónico proporcionado no es valido',
     });
   }
   if (!validatePassword) {
     res.status(400).json({
       success: false,
-      message: "La contraseña proporcionada no es valida",
+      message: 'La contraseña proporcionada no es valida',
     });
   }
 
@@ -65,7 +65,7 @@ signupRoute.post("/", async (req, res) => {
     res.status(409).json({
       success: false,
       message:
-        "El correo electrónico proporcionado ya está vinculado a un usuario",
+        'El correo electrónico proporcionado ya está vinculado a un usuario',
     });
   }
 
@@ -83,7 +83,7 @@ signupRoute.post("/", async (req, res) => {
 
     res.status(201).json({
       success: true,
-      message: "Usuario registrado correctamente",
+      message: 'Usuario registrado correctamente',
       token: generateToken({
         _id: newUser._id,
         username: newUser.username,

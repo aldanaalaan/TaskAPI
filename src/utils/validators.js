@@ -6,9 +6,9 @@ import {
   regexPassword,
   regexText,
   regexUsername,
-} from "./regex.js";
+} from './regex.js';
 
-import { User } from "../models/User.js";
+import { User } from '../models/User.js';
 
 // VALIDATION: RegEx
 

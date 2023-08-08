@@ -1,14 +1,15 @@
 // * Marcar/Desmarcar tarea como completada
 // Importaciones
 
-import { Router } from "express";
-import { Task } from "../../models/Task.js";
-import errorHandler from "../../utils/errorHandler.js";
-import validateToken from "../../middlewares/validateToken.js";
+import { Router } from 'express';
+
+import validateToken from '../../middlewares/validateToken.js';
+import { Task } from '../../models/Task.js';
+import errorHandler from '../../utils/errorHandler.js';
 
 const completedRoute = Router();
 
-completedRoute.put(":id/completed", validateToken, async (req, res) => {
+completedRoute.put(':id/completed', validateToken, async (req, res) => {
   const taskId = req.params.id;
   const ownerId = req.decoded._id;
 
@@ -21,7 +22,7 @@ completedRoute.put(":id/completed", validateToken, async (req, res) => {
   if (!task) {
     res.status(404).json({
       success: false,
-      message: "Tarea no encontrada",
+      message: 'Tarea no encontrada',
     });
   }
 
@@ -33,7 +34,7 @@ completedRoute.put(":id/completed", validateToken, async (req, res) => {
     const updatedTask = await task.save();
     res.status(200).json({
       success: true,
-      message: "Estado de la tarea actualizado con éxito",
+      message: 'Estado de la tarea actualizado con éxito',
       estate: updatedTask.completed,
     });
   } catch (err) {

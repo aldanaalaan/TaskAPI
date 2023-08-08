@@ -6,16 +6,18 @@
  */
 
 // Importaciones
-import { Schema, model } from "mongoose";
-import bcryptjs from "bcryptjs";
-import { regexUsername, regexEmail } from "../utils/regex.js";
+import { Schema, model } from 'mongoose';
+
+import bcryptjs from 'bcryptjs';
+
+import { regexUsername, regexEmail } from '../utils/regex.js';
 
 // Definición del esquema de usuarios
 const userSchema = new Schema({
   username: {
     type: String,
     required: true,
-    match: [regexUsername, "El nombre de usuario no es válido"],
+    match: [regexUsername, 'El nombre de usuario no es válido'],
   },
   email: {
     type: String,
@@ -23,7 +25,7 @@ const userSchema = new Schema({
     unique: true,
     trim: true,
     lowercase: true,
-    match: [regexEmail, "El correo electrónico no es válido"],
+    match: [regexEmail, 'El correo electrónico no es válido'],
   },
   password: {
     type: String,
@@ -42,7 +44,7 @@ userSchema.methods.validateCorrectPassword = function (password) {
 };
 
 // Modelo de usuario
-const User = model("User", userSchema);
+const User = model('User', userSchema);
 
 // Exportar esquema y modelo
 export { userSchema, User };

@@ -7,7 +7,7 @@
 */
 
 // Importaciones
-import { Schema, model } from "mongoose";
+import { Schema, model } from 'mongoose';
 
 // Definición del esquema de tarea
 const taskSchema = new Schema({
@@ -32,13 +32,13 @@ const taskSchema = new Schema({
   },
   owner: {
     type: Schema.Types.ObjectId,
-    ref: "User",
+    ref: 'User',
     required: true,
   },
 });
 
 // Modelo de tareas
-const Task = model("Task", taskSchema);
+const Task = model('Task', taskSchema);
 
 // Exportar esquema y modelo
 export { taskSchema, Task };

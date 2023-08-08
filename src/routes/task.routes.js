@@ -9,13 +9,13 @@
 
 // Importaciones
 
-import { Router, json, urlencoded } from "express";
+import { Router, json, urlencoded } from 'express';
 
-import completedRoute from "../controllers/task/completed.js";
-import createRoute from "../controllers/task/create.js";
-import deleteRoute from "../controllers/user/delete.js";
-import taskRoutes from "../controllers/task/task.js";
-import updateRoute from "../controllers/task/update.js";
+import completedRoute from '../controllers/task/completed.js';
+import createRoute from '../controllers/task/create.js';
+import taskRoutes from '../controllers/task/task.js';
+import updateRoute from '../controllers/task/update.js';
+import deleteRoute from '../controllers/user/delete.js';
 
 const taskRouter = Router();
 
@@ -24,10 +24,10 @@ taskRouter.use(json());
 taskRouter.use(urlencoded({ extended: false }));
 
 // Rutas
-taskRouter.use("/", completedRoute);
-taskRouter.use("/", createRoute);
-taskRouter.use("/", deleteRoute);
-taskRouter.use("/", taskRoutes);
-taskRouter.use("/", updateRoute);
+taskRouter.use('/', completedRoute);
+taskRouter.use('/', createRoute);
+taskRouter.use('/', deleteRoute);
+taskRouter.use('/', taskRoutes);
+taskRouter.use('/', updateRoute);
 
 export default taskRouter;

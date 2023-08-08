@@ -1,9 +1,9 @@
 // * Punto de acceso que inicia la aplicación
 // Importaciones
 
-import app from "./src/app.js";
-import connectDatabase from "./src/database/database.js";
-import dotenv from "dotenv";
+import app from './src/app.js';
+import connectDatabase from './src/database/database.js';
+import dotenv from 'dotenv';
 
 // Configurar variables de entorno
 dotenv.config();
