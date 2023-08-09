@@ -5,7 +5,6 @@
 Una API de práctica para aprender conceptos como enrutamiento, middlewares, control de acceso con JWT, bases de datos no relacionales con MongoDB y validación de datos, ademas de aprender a documentar una API.
 
 - [TaskAPI](#taskapi)
-  - [Ejemplos de uso](#ejemplos-de-uso)
   - [Instalación](#instalación)
     - [Requisitos de instalación](#requisitos-de-instalación)
     - [Instrucciones de instalación](#instrucciones-de-instalación)
@@ -15,10 +14,6 @@ Una API de práctica para aprender conceptos como enrutamiento, middlewares, con
     - [Usuario](#usuario)
       - [Registro de usuario](#registro-de-usuario)
       - [Inicio de sesión](#inicio-de-sesión)
-
-## Ejemplos de uso
-
-<!-- TODO: Sección "Ejemplos de Uso" -->
 
 ## Instalación
 
