@@ -1,9 +1,10 @@
 // * Middleware para validar los JWT
 // Importaciones
 
-import jwt from 'jsonwebtoken';
+import { verify, TokenExpiredError, JsonWebTokenError } from 'jsonwebtoken';
 
 import { User } from '../models/User.js';
+import errorHandler from '../utils/errorHandler.js';
 
 async function validateToken(req, res, next) {
   const token = req.headers['x-access-token'];
@@ -15,7 +16,7 @@ async function validateToken(req, res, next) {
   }
 
   try {
-    const decoded = jwt.verify(token, process.env.SECRET_KEY);
+    const decoded = verify(token, process.env.SECRET_KEY);
     const user = await User.findOne({ _id: decoded._id });
 
     if (!user) {
@@ -27,22 +28,19 @@ async function validateToken(req, res, next) {
 
     req.decoded = decoded;
   } catch (err) {
-    if (err.name === 'TokenExpiredError') {
+    if (err instanceof TokenExpiredError) {
       return res.status(401).json({
         success: false,
         message:
           'Token de acceso expirado, inicie sesión nuevamente para obtener un token vigente',
       });
-    } else if (err.name === 'JsonWebTokenError') {
+    } else if (err instanceof JsonWebTokenError) {
       return res.status(401).json({
         success: false,
         message: 'Token de acceso invalido',
       });
     } else {
-      return res.status(500).json({
-        success: false,
-        message: 'Error interno del servidor',
-      });
+      return errorHandler(res);
     }
   }
   next();

@@ -14,6 +14,7 @@ Una API de práctica para aprender conceptos como enrutamiento, middlewares, con
   - [Endpoints](#endpoints)
     - [Usuario](#usuario)
       - [Registro de usuario](#registro-de-usuario)
+      - [Inicio de sesión](#inicio-de-sesión)
 
 ## Ejemplos de uso
 
@@ -108,21 +109,21 @@ Para poder ejecutar TaskAPI de forma local se necesita:
 
 #### Registro de usuario
 
+Permite registrar un nuevo usuario en la BD y devuelve un token para ese usuario.
+
 - Método: POST
 
 - Ruta. `/taskapi/user/signup/`
 
-- Descripción: Este endpoint permite guardar un nuevo usuario en la DB.
-
 - **Parámetros**.
 
-  Deben enviarse a traves del **_body_** de la petición, en un JSON.
+  Deben enviarse a traves del **_body_** de la petición como JSON.
 
   | Parámetro  |   Tipo   | Requerido | Descripción                                                                         |
   | ---------- | :------: | :-------: | ----------------------------------------------------------------------------------- |
   | `username` | `String` |    Si     | Un nombre para el usuario no único, requerido.                                      |
   | `email`    | `String` |    Si     | Un correo electrónico que identifica a un usuario dentro de la DB, único requerido. |
-  | `password` | `String` |    Si     | Contraseña que le dará acceso al token JWT al iniciar sesión.                       |
+  | `password` | `String` |    Si     | Contraseña que le dará acceso al JWT al iniciar sesión.                             |
 
 - **Respuestas**.
 
@@ -134,7 +135,7 @@ Para poder ejecutar TaskAPI de forma local se necesita:
     | `message` | Un mensaje que proporciona información adicional sobre el resultado de la operación                                                                                 |
     | `token`   | JWT necesario para el acceso a otro endpoint de la API, este contiene el \_id , su username y su email. Solo se proporciona en caso de que la operación sea exitosa |
 
-  - Respuesta
+  - Respuestas
 
     | Código de respuestas | Respuesta                                                           |
     | :------------------: | ------------------------------------------------------------------- |
@@ -144,3 +145,38 @@ Para poder ejecutar TaskAPI de forma local se necesita:
     |         500          | Error interno del servidor                                          |
 
 ---
+
+#### Inicio de sesión
+
+Devuelve un nuevo token para un usuario ya registrado.
+
+- Método: POST
+
+- Ruta: `/taskapi/user/login`
+
+- **Parámetros**
+
+  Deben enviarse a través del **body** de la petición como JSON.
+
+  | Parámetro  |   Tipo   | Requerido | Descripción                                      |
+  | ---------- | :------: | :-------: | ------------------------------------------------ |
+  | `email`    | `String` |    Si     | El correo electrónico que identifica al usuario  |
+  | `password` | `String` |    Si     | Contraseña del usuario qué te dará acceso al JWT |
+
+- **Respuestas**.
+
+  - Estructura de la respuesta
+
+    | Propiedad | Descripción                                                                                                                                                         |
+    | --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+    | `success` | Indica si la operación fue exitosa (**true**) o no (**false**)                                                                                                      |
+    | `message` | Un mensaje que proporciona información adicional sobre el resultado de la operación                                                                                 |
+    | `token`   | JWT necesario para el acceso a otro endpoint de la API, este contiene el \_id , su username y su email. Solo se proporciona en caso de que la operación sea exitosa |
+
+  - Respuestas
+
+    | Código de respuestas | Respuesta                                                      |
+    | :------------------: | -------------------------------------------------------------- |
+    |         200          | Se ha iniciado sesión correctamente                            |
+    |         401          | Uno o ninguno de los datos coinciden con un usuario registrado |
+    |         500          | Error interno del servidor                                     |
