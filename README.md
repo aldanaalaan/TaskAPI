@@ -126,24 +126,21 @@ Para poder ejecutar TaskAPI de forma local se necesita:
 
 - **Respuestas**.
 
-  - Respuesta exitosa:
+  - Estructura de la respuesta
 
-    Si la solicitud se realiza con éxito, el servidor devuelve un objeto JSON que contiene la siguiente información.
+    | Propiedad | Descripción                                                                                                                                                         |
+    | --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+    | `success` | Indica si la operación fue exitosa (**true**) o no (**false**)                                                                                                      |
+    | `message` | Un mensaje que proporciona información adicional sobre el resultado de la operación                                                                                 |
+    | `token`   | JWT necesario para el acceso a otro endpoint de la API, este contiene el \_id , su username y su email. Solo se proporciona en caso de que la operación sea exitosa |
 
-    | Propiedad | Descripción                                                                                            |
-    | --------- | ------------------------------------------------------------------------------------------------------ |
-    | `success` | Indica si la operación fue exitosa (**true**) o no (**false**)                                         |
-    | `message` | Un mensaje que proporciona información adicional sobre el resultado de la operación                    |
-    | `token`   | JWT necesario para el acceso a otro endpoint de la API, este contiene el \_id , su username y su email |
+  - Respuesta
 
-    - Código de estado: `201 Created`
-
-- Códigos de respuesta
-
-  | Código de respuestas | Respuesta                                                           |
-  | :------------------: | ------------------------------------------------------------------- |
-  |         201          | El usuario se ha creado correctamente.                              |
-  |         400          | Los datos son inválidos o falta información necesaria.              |
-  |         409          | El correo electrónico proporcionado ya está vinculado a un usuario. |
+    | Código de respuestas | Respuesta                                                           |
+    | :------------------: | ------------------------------------------------------------------- |
+    |         201          | El usuario se ha creado correctamente.                              |
+    |         400          | Los datos son inválidos o falta información necesaria.              |
+    |         409          | El correo electrónico proporcionado ya está vinculado a un usuario. |
+    |         500          | Error interno del servidor                                          |
 
 ---
