@@ -14,6 +14,7 @@ Una API de práctica para aprender conceptos como enrutamiento, middlewares, con
     - [Usuario](#usuario)
       - [Registro de usuario](#registro-de-usuario)
       - [Inicio de sesión](#inicio-de-sesión)
+      - [Me](#me)
 
 ## Instalación
 
@@ -108,7 +109,7 @@ Permite registrar un nuevo usuario en la BD y devuelve un token para ese usuario
 
 - Método: POST
 
-- Ruta. `/taskapi/user/signup/`
+- Ruta: `/taskapi/users/signup/`
 
 - **Parámetros**.
 
@@ -120,7 +121,7 @@ Permite registrar un nuevo usuario en la BD y devuelve un token para ese usuario
   | `email`    | `String` |    Si     | Un correo electrónico que identifica a un usuario dentro de la DB, único requerido. |
   | `password` | `String` |    Si     | Contraseña que le dará acceso al JWT al iniciar sesión.                             |
 
-- **Respuestas**.
+- **Respuesta**.
 
   - Estructura de la respuesta
 
@@ -132,14 +133,12 @@ Permite registrar un nuevo usuario en la BD y devuelve un token para ese usuario
 
   - Respuestas
 
-    | Código de respuestas | Respuesta                                                           |
-    | :------------------: | ------------------------------------------------------------------- |
-    |         201          | El usuario se ha creado correctamente.                              |
-    |         400          | Los datos son inválidos o falta información necesaria.              |
-    |         409          | El correo electrónico proporcionado ya está vinculado a un usuario. |
-    |         500          | Error interno del servidor                                          |
-
----
+    | Código | Respuesta                                                           |
+    | :----: | ------------------------------------------------------------------- |
+    |  201   | El usuario se ha creado correctamente.                              |
+    |  400   | Los datos son inválidos o falta información necesaria.              |
+    |  409   | El correo electrónico proporcionado ya está vinculado a un usuario. |
+    |  500   | Error interno del servidor                                          |
 
 #### Inicio de sesión
 
@@ -147,7 +146,7 @@ Devuelve un nuevo token para un usuario ya registrado.
 
 - Método: POST
 
-- Ruta: `/taskapi/user/login`
+- Ruta: `/taskapi/users/login/`
 
 - **Parámetros**
 
@@ -158,7 +157,7 @@ Devuelve un nuevo token para un usuario ya registrado.
   | `email`    | `String` |    Si     | El correo electrónico que identifica al usuario  |
   | `password` | `String` |    Si     | Contraseña del usuario qué te dará acceso al JWT |
 
-- **Respuestas**.
+- **Respuesta**.
 
   - Estructura de la respuesta
 
@@ -170,8 +169,43 @@ Devuelve un nuevo token para un usuario ya registrado.
 
   - Respuestas
 
-    | Código de respuestas | Respuesta                                                      |
-    | :------------------: | -------------------------------------------------------------- |
-    |         200          | Se ha iniciado sesión correctamente                            |
-    |         401          | Uno o ninguno de los datos coinciden con un usuario registrado |
-    |         500          | Error interno del servidor                                     |
+    | Código | Respuesta                                                      |
+    | :----: | -------------------------------------------------------------- |
+    |  200   | Se ha iniciado sesión correctamente                            |
+    |  401   | Uno o ninguno de los datos coinciden con un usuario registrado |
+    |  500   | Error interno del servidor                                     |
+
+#### Me
+
+Un endpoint para obtener información de un usuario ya autenticado.
+
+- Método: GET
+
+- Ruta: `taskapi/users/me`
+
+- **Parámetros**.
+
+  Debe enviarse a traves de la cabecera `x-access-token`.
+
+  | Cabecera           |      Tipo      | Requerido | Descripción                                                                            |
+  | ------------------ | :------------: | :-------: | -------------------------------------------------------------------------------------- |
+  | `'x-access-token'` | JSON Web Token |    Si     | Token obtenido a traves de [Signup](#registro-de-usuario) o [Login](#inicio-de-sesión) |
+
+- **Respuesta**.
+
+  - Estructura de la respuesta
+
+    | Propiedad | Descripción                                                                                               |
+    | --------- | --------------------------------------------------------------------------------------------------------- |
+    | `success` | Indica si la operación fue exitosa (**true**) o no (**false**)                                            |
+    | `message` | Un mensaje que proporciona información adicional sobre el resultado de la operación                       |
+    | `user`    | Datos del usuario (username, email, password). Solo se proporciona en caso de que la operación se exitosa |
+
+  - Respuestas.
+
+    | Código | Respuesta                  |
+    | ------ | -------------------------- |
+    | 200    | La operación fue exitosa   |
+    | 401    | Token expirado o invalido  |
+    | 404    | Usuario no encontrado      |
+    | 500    | Error interno del servidor |
