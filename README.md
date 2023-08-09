@@ -125,11 +125,11 @@ Permite registrar un nuevo usuario en la BD y devuelve un token para ese usuario
 
   - Estructura de la respuesta
 
-    | Propiedad | Descripción                                                                                                                                                         |
-    | --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-    | `success` | Indica si la operación fue exitosa (**true**) o no (**false**)                                                                                                      |
-    | `message` | Un mensaje que proporciona información adicional sobre el resultado de la operación                                                                                 |
-    | `token`   | JWT necesario para el acceso a otro endpoint de la API, este contiene el \_id , su username y su email. Solo se proporciona en caso de que la operación sea exitosa |
+    | Propiedad | Descripción                                                                                                                                                                                         |
+    | --------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+    | `success` | Indica si la operación fue exitosa (**true**) o no (**false**)                                                                                                                                      |
+    | `message` | Un mensaje que proporciona información adicional sobre el resultado de la operación                                                                                                                 |
+    | `token`   | JWT necesario para el acceso a otro endpoint de la API, este contiene el \_id , su username y su email. Solo se proporciona en caso de que la operación sea exitosa, y tiene expiración de una hora |
 
   - Respuestas
 
@@ -161,11 +161,11 @@ Devuelve un nuevo token para un usuario ya registrado.
 
   - Estructura de la respuesta
 
-    | Propiedad | Descripción                                                                                                                                                         |
-    | --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-    | `success` | Indica si la operación fue exitosa (**true**) o no (**false**)                                                                                                      |
-    | `message` | Un mensaje que proporciona información adicional sobre el resultado de la operación                                                                                 |
-    | `token`   | JWT necesario para el acceso a otro endpoint de la API, este contiene el \_id , su username y su email. Solo se proporciona en caso de que la operación sea exitosa |
+    | Propiedad | Descripción                                                                                                                                                                                        |
+    | --------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+    | `success` | Indica si la operación fue exitosa (**true**) o no (**false**)                                                                                                                                     |
+    | `message` | Un mensaje que proporciona información adicional sobre el resultado de la operación                                                                                                                |
+    | `token`   | JWT necesario para el acceso a otro endpoint de la API, este contiene el \_id , su username y su email. Solo se proporciona en caso de que la operación sea exitosa y tiene expiración de una hora |
 
   - Respuestas
 

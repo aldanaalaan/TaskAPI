@@ -9,6 +9,6 @@ export default function generateToken(payload) {
   };
 
   return jsonwebtoken.sign(tokenData, process.env.SECRET_KEY, {
-    expiresIn: '24h',
+    expiresIn: '1h',
   });
 }
