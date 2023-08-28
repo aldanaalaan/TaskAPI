@@ -5,6 +5,7 @@ import { Router } from 'express';
 
 import validateToken from '../../middlewares/validateToken.js';
 import { User } from '../../models/User.js';
+import errorHandler from '../../utils/errorHandler.js';
 import { validateEmail, validateUsername } from '../../utils/validators.js';
 
 const updateRoute = Router();
@@ -62,10 +63,7 @@ updateRoute.put('/', validateToken, async (req, res) => {
       },
     });
   } catch (err) {
-    res.status(500).json({
-      success: false,
-      message: 'Error interno del servidor',
-    });
+    errorHandler(res);
   }
 });
 
