@@ -1,9 +1,9 @@
 // * Obtener una tarea especifica o todas las tareas de un usuario
 // Importaciones
-import { Router } from 'express';
 
-import validateToken from '../../middlewares/validateToken.js';
+import { Router } from 'express';
 import { Task } from '../../models/Task.js';
+import validateToken from '../../middlewares/validateToken.js';
 
 const taskRoutes = Router();
 

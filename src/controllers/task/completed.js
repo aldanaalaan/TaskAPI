@@ -2,10 +2,9 @@
 // Importaciones
 
 import { Router } from 'express';
-
-import validateToken from '../../middlewares/validateToken.js';
 import { Task } from '../../models/Task.js';
 import errorHandler from '../../utils/errorHandler.js';
+import validateToken from '../../middlewares/validateToken.js';
 
 const completedRoute = Router();
 

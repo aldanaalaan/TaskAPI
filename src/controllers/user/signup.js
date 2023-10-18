@@ -1,17 +1,17 @@
 // * Registro de un nuevo usuario
 // Importaciones
 
-import { Router } from 'express';
-
-import { User } from '../../models/User.js';
-import errorHandler from '../../utils/errorHandler.js';
-import generateToken from '../../utils/generateToken.js';
 import {
   emailExists,
   validateEmail,
   validatePassword,
   validateUsername,
 } from '../../utils/validators.js';
+
+import { Router } from 'express';
+import { User } from '../../models/User.js';
+import errorHandler from '../../utils/errorHandler.js';
+import generateToken from '../../utils/generateToken.js';
 
 const signupRoute = Router();
 

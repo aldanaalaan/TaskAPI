@@ -1,4 +1,5 @@
 // Importaciones
+
 import jsonwebtoken from 'jsonwebtoken';
 
 export default function generateToken(payload) {

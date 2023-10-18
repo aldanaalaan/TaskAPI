@@ -6,11 +6,11 @@
  */
 
 // Importaciones
+
 import { Schema, model } from 'mongoose';
+import { regexEmail, regexUsername } from '../utils/regex.js';
 
 import bcryptjs from 'bcryptjs';
-
-import { regexUsername, regexEmail } from '../utils/regex.js';
 
 // Definición del esquema de usuarios
 const userSchema = new Schema({

@@ -7,6 +7,7 @@
 */
 
 // Importaciones
+
 import { Schema, model } from 'mongoose';
 
 // Definición del esquema de tarea

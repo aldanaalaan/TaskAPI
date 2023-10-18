@@ -1,12 +1,12 @@
 // * Actualizar nombre de usuario y/o correo electrónico
 // Importaciones
 
-import { Router } from 'express';
+import { validateEmail, validateUsername } from '../../utils/validators.js';
 
-import validateToken from '../../middlewares/validateToken.js';
+import { Router } from 'express';
 import { User } from '../../models/User.js';
 import errorHandler from '../../utils/errorHandler.js';
-import { validateEmail, validateUsername } from '../../utils/validators.js';
+import validateToken from '../../middlewares/validateToken.js';
 
 const updateRoute = Router();
 

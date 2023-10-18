@@ -1,16 +1,16 @@
 // * Obtener token con un usuario ya creado
 // Importaciones
 
-import { Router } from 'express';
-
-import { User } from '../../models/User.js';
-import errorHandler from '../../utils/errorHandler.js';
-import generateToken from '../../utils/generateToken.js';
 import {
   emailExists,
   validateEmail,
   validatePassword,
 } from '../../utils/validators.js';
+
+import { Router } from 'express';
+import { User } from '../../models/User.js';
+import errorHandler from '../../utils/errorHandler.js';
+import generateToken from '../../utils/generateToken.js';
 
 const loginRoute = Router();
 

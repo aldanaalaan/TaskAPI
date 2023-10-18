@@ -1,12 +1,12 @@
 // * Actualizar el titulo y/o descripción de una tarea
 // Importaciones
 
-import { Router } from 'express';
+import { validateDescription, validateTitle } from '../../utils/validators.js';
 
-import validateToken from '../../middlewares/validateToken.js';
+import { Router } from 'express';
 import { Task } from '../../models/Task.js';
 import errorHandler from '../../utils/errorHandler.js';
-import { validateDescription, validateTitle } from '../../utils/validators.js';
+import validateToken from '../../middlewares/validateToken.js';
 
 const updateRoute = Router();
 
@@ -58,14 +58,14 @@ updateRoute.put(':id', validateToken, async (req, res) => {
       // OPTIMIZE: Encontrar una forma de retornar el task sin repetición de código
       task: description
         ? {
-            _id: updatedTask._id,
-            title: updatedTask.title,
-            description: updatedTask.description,
-          }
+          _id: updatedTask._id,
+          title: updatedTask.title,
+          description: updatedTask.description,
+        }
         : {
-            _id: updatedTask._id,
-            title: updatedTask.title,
-          },
+          _id: updatedTask._id,
+          title: updatedTask.title,
+        },
     });
   } catch (err) {
     errorHandler(res);

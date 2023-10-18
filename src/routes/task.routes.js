@@ -13,9 +13,9 @@ import { Router, json, urlencoded } from 'express';
 
 import completedRoute from '../controllers/task/completed.js';
 import createRoute from '../controllers/task/create.js';
+import deleteRoute from '../controllers/user/delete.js';
 import taskRoutes from '../controllers/task/task.js';
 import updateRoute from '../controllers/task/update.js';
-import deleteRoute from '../controllers/user/delete.js';
 
 const taskRouter = Router();
 

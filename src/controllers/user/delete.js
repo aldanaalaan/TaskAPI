@@ -2,10 +2,9 @@
 // Importaciones
 
 import { Router } from 'express';
-
-import validateToken from '../../middlewares/validateToken.js';
 import { Task } from '../../models/Task.js';
 import { User } from '../../models/User.js';
+import validateToken from '../../middlewares/validateToken.js';
 
 const deleteRoute = Router();
 

@@ -85,7 +85,7 @@ Para poder ejecutar TaskAPI de forma local se necesita:
    //- Registro de usuario: POST /taskapi/users/signup - para registrar un nuevo usuario.
    //- Inicio de sesión: POST /taskapi/users/login - para iniciar sesión en la cuenta de un usuario registrado.
    //- Obtener información del usuario: GET /taskapi/users/me - para obtener información del usuario autenticado actualmente.
-   - Actualizar información del usuario: PUT /taskapi/users/me - para actualizar información del usuario autenticado actualmente.
+   //- Actualizar información del usuario: PUT /taskapi/users/me - para actualizar información del usuario autenticado actualmente.
    - Cambio de contraseña: PUT /taskapi/users/me/password - para permitir que un usuario cambie su contraseña actual.
    - Eliminar cuenta: DELETE /taskapi/users/me - para permitir que un usuario elimine su cuenta y toda su información asociada.
 
@@ -246,7 +246,7 @@ Un endpoint para actualizar la información e un usuario ya autenticado.
     | Código | Respuesta |
     | :----: | -------------------------- |
     | 200 | La operación fue exitosa |
-    | 400 | Hay datos no inválidos|
+    | 400 | Hay datos no válidos|
     | 401 | Token expirado o invalido |
     | 404 | Usuario no encontrado |
     | 500 | Error interno del servidor |

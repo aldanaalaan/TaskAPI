@@ -1,7 +1,7 @@
 // * Middleware para validar los JWT
 // Importaciones
 
-import { verify, TokenExpiredError, JsonWebTokenError } from 'jsonwebtoken';
+import { JsonWebTokenError, TokenExpiredError, verify } from 'jsonwebtoken';
 
 import { User } from '../models/User.js';
 import errorHandler from '../utils/errorHandler.js';

@@ -1,12 +1,12 @@
 // * Crear una nueva tarea
 // Importaciones
 
-import { Router } from 'express';
+import { validateDescription, validateTitle } from '../../utils/validators.js';
 
-import validateToken from '../../middlewares/validateToken.js';
+import { Router } from 'express';
 import { Task } from '../../models/Task.js';
 import errorHandler from '../../utils/errorHandler.js';
-import { validateDescription, validateTitle } from '../../utils/validators.js';
+import validateToken from '../../middlewares/validateToken.js';
 
 const createRoute = Router();
 
