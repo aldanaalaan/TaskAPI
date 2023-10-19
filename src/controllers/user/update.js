@@ -1,12 +1,12 @@
 // * Actualizar nombre de usuario y/o correo electrónico
 // Importaciones
 
-import { validateEmail, validateUsername } from '../../utils/validators.js';
-
 import { Router } from 'express';
+
+import validateToken from '../../middlewares/validateToken.js';
 import { User } from '../../models/User.js';
 import errorHandler from '../../utils/errorHandler.js';
-import validateToken from '../../middlewares/validateToken.js';
+import { validateEmail, validateUsername } from '../../utils/validators.js';
 
 const updateRoute = Router();
 
@@ -63,7 +63,10 @@ updateRoute.put('/', validateToken, async (req, res) => {
       },
     });
   } catch (err) {
-    errorHandler(res);
+    res.status(500).json({
+      success: false,
+      message: 'Error interno del servidor',
+    });
   }
 });
 

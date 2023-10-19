@@ -14,7 +14,7 @@ Una API de práctica para aprender conceptos como enrutamiento, middlewares, con
     - [Usuario](#usuario)
       - [Registro de usuario](#registro-de-usuario)
       - [Inicio de sesión](#inicio-de-sesión)
-      - [Obtener información del usuario](#obtener-información-del-usuario)
+      - [Me](#me)
       - [Actualizar información del usuario](#actualizar-información-del-usuario)
 
 ## Instalación
@@ -82,10 +82,10 @@ Para poder ejecutar TaskAPI de forma local se necesita:
 <!--
    TODO: Eliminar este comentarios
    * Usuarios
-   //- Registro de usuario: POST /taskapi/users/signup - para registrar un nuevo usuario.
-   //- Inicio de sesión: POST /taskapi/users/login - para iniciar sesión en la cuenta de un usuario registrado.
-   //- Obtener información del usuario: GET /taskapi/users/me - para obtener información del usuario autenticado actualmente.
-   //- Actualizar información del usuario: PUT /taskapi/users/me - para actualizar información del usuario autenticado actualmente.
+   - Registro de usuario: POST /taskapi/users/signup - para registrar un nuevo usuario.
+   - Inicio de sesión: POST /taskapi/users/login - para iniciar sesión en la cuenta de un usuario registrado.
+   - Obtener información del usuario: GET /taskapi/users/me - para obtener información del usuario autenticado actualmente.
+   - Actualizar información del usuario: PUT /taskapi/users/me - para actualizar información del usuario autenticado actualmente.
    - Cambio de contraseña: PUT /taskapi/users/me/password - para permitir que un usuario cambie su contraseña actual.
    - Eliminar cuenta: DELETE /taskapi/users/me - para permitir que un usuario elimine su cuenta y toda su información asociada.
 
@@ -100,13 +100,15 @@ Para poder ejecutar TaskAPI de forma local se necesita:
 
 ## Endpoints
 
+---
+
 ### Usuario
 
 #### Registro de usuario
 
 Permite registrar un nuevo usuario en la BD y devuelve un token para ese usuario.
 
-- Método: **POST**
+- Método: POST
 
 - Ruta: `/taskapi/users/signup/`
 
@@ -143,13 +145,13 @@ Permite registrar un nuevo usuario en la BD y devuelve un token para ese usuario
 
 Devuelve un nuevo token para un usuario ya registrado.
 
-- Método: **POST**
+- Método: POST
 
 - Ruta: `/taskapi/users/login/`
 
 - **Parámetros**
 
-  Deben enviarse a través del **_body_** de la petición como JSON.
+  Deben enviarse a través del **body** de la petición como JSON.
 
   | Parámetro  |   Tipo   | Requerido | Descripción                                      |
   | ---------- | :------: | :-------: | ------------------------------------------------ |
@@ -174,11 +176,11 @@ Devuelve un nuevo token para un usuario ya registrado.
     |  401   | Uno o ninguno de los datos coinciden con un usuario registrado |
     |  500   | Error interno del servidor                                     |
 
-#### Obtener información del usuario
+#### Me
 
 Un endpoint para obtener información de un usuario ya autenticado.
 
-- Método: **GET**
+- Método: GET
 
 - Ruta: `taskapi/users/me`
 
@@ -200,7 +202,7 @@ Un endpoint para obtener información de un usuario ya autenticado.
     | `message` | Un mensaje que proporciona información adicional sobre el resultado de la operación                       |
     | `user`    | Datos del usuario (username, email, password). Solo se proporciona en caso de que la operación se exitosa |
 
-  - Respuestas
+  - Respuestas.
 
     | Código | Respuesta                  |
     | :----: | -------------------------- |
@@ -246,7 +248,7 @@ Un endpoint para actualizar la información e un usuario ya autenticado.
     | Código | Respuesta |
     | :----: | -------------------------- |
     | 200 | La operación fue exitosa |
-    | 400 | Hay datos no válidos|
+    | 400 | Hay datos no inválidos|
     | 401 | Token expirado o invalido |
     | 404 | Usuario no encontrado |
     | 500 | Error interno del servidor |
